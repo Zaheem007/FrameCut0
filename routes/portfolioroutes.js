@@ -26,5 +26,12 @@ router.get("/:videographerId", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
+router.delete("/:id", async (req, res) => {
+  try {
+    await Portfolio.findByIdAndDelete(req.params.id);
+    res.json({ message: "Portfolio item deleted" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
 module.exports = router;

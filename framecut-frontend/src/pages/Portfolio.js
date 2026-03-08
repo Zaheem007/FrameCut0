@@ -1,18 +1,43 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../components/DashboardLayout";
 import { GLOBAL_CSS, RippleButton, toast } from "../theme";
 
 const styles = `
   ${GLOBAL_CSS}
+
   .port-wrap { max-width: 680px; font-family: var(--ff-ui); }
 
-  .add-form { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 26px 28px; margin-bottom: 44px; box-shadow: var(--shadow-sm); }
-  .add-form-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--violet); margin-bottom: 20px; display: block; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none; cursor: pointer;
+    padding: 0; margin-bottom: 32px; transition: color 0.2s; font-family: var(--ff-ui);
+  }
+  .back-btn:hover { color: var(--violet); }
+  .back-btn-arrow { font-size: 14px; transition: transform 0.2s; }
+  .back-btn:hover .back-btn-arrow { transform: translateX(-3px); }
+
+  .add-form {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 30px;
+    margin-bottom: 44px;
+    box-shadow: var(--shadow-sm);
+  }
+  .add-form-label {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--violet); margin-bottom: 20px; display: block;
+  }
 
   .port-item {
-    background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius);
-    padding: 18px 22px; margin-bottom: 10px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 10px;
     display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
     box-shadow: var(--shadow-sm);
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
@@ -22,11 +47,15 @@ const styles = `
   .port-item-info { flex: 1; }
   .port-item-title { font-family: var(--ff-display); font-size: 15px; font-weight: 600; color: var(--plum); margin-bottom: 5px; }
   .port-item-desc { font-size: 12.5px; color: var(--muted); font-weight: 300; margin-bottom: 10px; line-height: 1.6; }
-  .port-item-link { font-size: 10.5px; color: var(--terra); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; transition: color 0.2s; }
+  .port-item-link {
+    font-size: 10.5px; color: var(--terra); text-decoration: none;
+    letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; transition: color 0.2s;
+  }
   .port-item-link:hover { color: var(--terra2); }
 `;
 
 function Portfolio() {
+  const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
   const [items, setItems] = useState([]);
   const [profileId, setProfileId] = useState(null);
@@ -67,6 +96,11 @@ function Portfolio() {
     <DashboardLayout role="videographer">
       <style>{styles}</style>
       <div className="port-wrap">
+
+        <button className="back-btn" onClick={() => navigate(-1)}>
+          <span className="back-btn-arrow">←</span> Back
+        </button>
+
         <div className="fc-page-header">
           <p className="fc-eyebrow">My Work</p>
           <h2 className="fc-title">Portfolio</h2>
@@ -75,9 +109,18 @@ function Portfolio() {
 
         <div className="add-form">
           <span className="add-form-label">Add New Item</span>
-          <div className="fc-field"><label className="fc-label">Title</label><input className="fc-input" name="title" placeholder="e.g. Wedding Highlight Reel" onChange={handleChange} value={form.title} /></div>
-          <div className="fc-field"><label className="fc-label">Video URL</label><input className="fc-input" name="videoUrl" placeholder="https://youtube.com/..." onChange={handleChange} value={form.videoUrl} /></div>
-          <div className="fc-field"><label className="fc-label">Description (optional)</label><textarea className="fc-textarea" name="description" placeholder="Brief description of this piece..." onChange={handleChange} value={form.description} /></div>
+          <div className="fc-field">
+            <label className="fc-label">Title</label>
+            <input className="fc-input" name="title" placeholder="e.g. Wedding Highlight Reel" onChange={handleChange} value={form.title} />
+          </div>
+          <div className="fc-field">
+            <label className="fc-label">Video URL</label>
+            <input className="fc-input" name="videoUrl" placeholder="https://youtube.com/..." onChange={handleChange} value={form.videoUrl} />
+          </div>
+          <div className="fc-field">
+            <label className="fc-label">Description (optional)</label>
+            <textarea className="fc-textarea" name="description" placeholder="Brief description of this piece..." onChange={handleChange} value={form.description} />
+          </div>
           <RippleButton className="fc-btn-terra" onClick={addItem}>Add to Portfolio</RippleButton>
         </div>
 

@@ -19,4 +19,4 @@ const portfolios = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Portfolio", portfolios);
+module.exports = mongoose.models.Portfolio || mongoose.model("Portfolio", portfolios);

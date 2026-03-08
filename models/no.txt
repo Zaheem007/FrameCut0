@@ -1,0 +1,45 @@
+Table users {
+  user_id int [pk, increment]
+  name varchar
+  email varchar [unique]
+  password varchar
+  role varchar
+  created_at timestamp
+}
+
+Table videoprofiles {
+  profile_id int [pk, increment]
+  user_id int [ref: > users.user_id]
+  bio text
+  experience int
+  location varchar
+  pricing decimal
+  profile_image varchar
+}
+
+Table bookings {
+  booking_id int [pk, increment]
+  videographer_id int [ref: > videoprofiles.profile_id]
+  client_id int [ref: > users.user_id]
+  event_type varchar
+  event_date date
+  event_location varchar
+  status varchar
+  created_at timestamp
+}
+
+Table reviews {
+  review_id int [pk, increment]
+  videographer_id int [ref: > videoprofiles.profile_id]
+  client_id int [ref: > users.user_id]
+  rating int
+  comment text
+  created_at timestamp
+}
+
+Table portfolios {
+  portfolio_id int [pk, increment]
+  videographer_id int [ref: > videoprofiles.profile_id]
+  media_url varchar
+  description text
+}

@@ -12,10 +12,20 @@ const portfolios = new mongoose.Schema({
   },
   videoUrl: {
     type: String,
-    required: true
+    default: ""
+  },
+  videoFile: {
+    type: String,  // base64 encoded video
+    default: ""
+  },
+  mediaType: {
+    type: String,
+    enum: ["url", "file", "both"],
+    default: "url"
   },
   description: {
-    type: String
+    type: String,
+    default: ""
   }
 }, { timestamps: true });
 

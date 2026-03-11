@@ -5,10 +5,10 @@ const videoprofiles = new mongoose.Schema({
   name:           { type: String },
   location:       { type: String },
   experience:     { type: String },
-  services:       { type: String },         // comma-joined string of event types
-  selectedEvents: { type: [String], default: [] },  // array of selected event type strings
-  pricing:        { type: Number },         // base/min price
-  servicePricing: {                         // array of {name, price} objects
+  services:       { type: String },         
+  selectedEvents: { type: [String], default: [] },  
+  pricing:        { type: Number },         
+  servicePricing: {                         
     type: [{
       name:  { type: String },
       price: { type: String },
@@ -17,7 +17,7 @@ const videoprofiles = new mongoose.Schema({
   },
   bio:            { type: String },
   profileImage:   { type: String },
-  equipment:      { type: String },         // textarea content listing equipment
+  equipment:      { type: String },         
 });
 
 module.exports = mongoose.models.VideographerProfile || mongoose.model("VideographerProfile", videoprofiles);

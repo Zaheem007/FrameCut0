@@ -1,7 +1,7 @@
 // App.js — add ToastProvider at the top level so toasts work everywhere
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ToastProvider } from "./theme";  // ← import this
+import { ToastProvider } from "./theme";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";

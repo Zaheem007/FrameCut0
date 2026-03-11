@@ -3,7 +3,6 @@ const Booking = require("../models/booking");
 
 const router = express.Router();
 
-/* GET ALL BOOKINGS — used by AdminDash and Home */
 router.get("/", async (req, res) => {
   try {
     const bookings = await Booking.find().populate("videographerId", "name");
@@ -13,7 +12,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* CREATE BOOKING */
+
 router.post("/create", async (req, res) => {
   try {
     const booking = new Booking(req.body);
@@ -25,7 +24,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-/* GET BOOKINGS FOR A SPECIFIC VIDEOGRAPHER */
+
 router.get("/videographer/:id", async (req, res) => {
   try {
     const bookings = await Booking.find({ videographerId: req.params.id });
@@ -35,7 +34,7 @@ router.get("/videographer/:id", async (req, res) => {
   }
 });
 
-/* UPDATE BOOKING STATUS */
+
 router.put("/update/:id", async (req, res) => {
   try {
     const booking = await Booking.findByIdAndUpdate(

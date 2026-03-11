@@ -3,7 +3,7 @@ const VideographerProfile = require("../models/videoprof");
 const { protect, adminOnly } = require("../middleware/authMiddleware");
 const router = express.Router();
 
-/* CREATE OR UPDATE PROFILE - upsert, no duplicates possible */
+
 router.post("/create", async (req, res) => {
   try {
     const { userId, ...rest } = req.body;
@@ -21,8 +21,6 @@ router.post("/create", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-/* GET ALL PROFILES - with optional location filter */
 router.get("/", async (req, res) => {
   try {
     const { location } = req.query;
@@ -36,8 +34,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-/* GET PROFILE BY USER ID - specific route, must be before /:id */
 router.get("/user/:userId", async (req, res) => {
   try {
     const profile = await VideographerProfile.findOne({ userId: req.params.userId });
@@ -47,8 +43,6 @@ router.get("/user/:userId", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-/* DELETE PROFILE - admin only, specific route before /:id */
 router.delete("/delete/:id", protect, adminOnly, async (req, res) => {
   try {
     await VideographerProfile.findByIdAndDelete(req.params.id);
@@ -57,8 +51,6 @@ router.delete("/delete/:id", protect, adminOnly, async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-/* UPDATE PROFILE BY ID */
 router.put("/update/:id", async (req, res) => {
   try {
     const updatedProfile = await VideographerProfile.findByIdAndUpdate(
@@ -71,8 +63,6 @@ router.put("/update/:id", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-/* GET PROFILE BY PROFILE ID - dynamic route always last */
 router.get("/:id", async (req, res) => {
   try {
     const profile = await VideographerProfile.findById(req.params.id);

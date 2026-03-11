@@ -43,6 +43,32 @@ const styles = `
 
   .form-section { margin-bottom: 32px; }
   .form-section-title { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--violet); margin-bottom: 18px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+  .pwd-section { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 26px; margin-top: 44px; }
+  .pwd-section-title { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: 18px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .pwd-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 600px) { .pwd-row { grid-template-columns: 1fr; } }
+
+  .img-upload-zone {
+    border: 2px dashed var(--border2); border-radius: var(--radius);
+    padding: 28px 20px; text-align: center; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s; position: relative;
+    background: var(--surface2);
+  }
+  .img-upload-zone:hover { border-color: var(--violet); background: rgba(124,92,158,0.04); }
+  .img-upload-zone.has-image { padding: 0; border-style: solid; border-color: var(--border); overflow: hidden; }
+  .img-upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .img-upload-preview { width: 100%; height: 200px; object-fit: cover; display: block; }
+  .img-upload-label { font-size: 12px; color: var(--muted); font-weight: 400; margin-top: 8px; }
+  .img-upload-hint { font-size: 10.5px; color: var(--border2); margin-top: 4px; }
+  .img-upload-icon { font-size: 28px; margin-bottom: 8px; opacity: 0.4; }
+  .img-upload-change {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(61,31,78,0.7); color: var(--bg);
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 8px; text-align: center; opacity: 0; transition: opacity 0.2s;
+  }
+  .img-upload-zone.has-image:hover .img-upload-change { opacity: 1; }
 `;
 
 const EMPTY = { name: "", location: "", experience: "", bio: "", profileImage: "", equipment: "" };
@@ -54,6 +80,22 @@ function CreateProfile() {
   const [loading, setLoading] = useState(true);
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [services, setServices] = useState([{ name: "", price: "" }]);
+  const [isExisting, setIsExisting] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
+  const [pwdForm, setPwdForm] = useState({ currentPassword: "", newPassword: "", confirmPassword: "" });
+  const [pwdLoading, setPwdLoading] = useState(false);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) { toast("Image must be under 5MB.", "warning"); return; }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+      setForm(prev => ({ ...prev, profileImage: reader.result }));
+    };
+    reader.readAsDataURL(file);
+  };
 
   useEffect(() => {
     if (!userId) { setLoading(false); return; }
@@ -63,8 +105,10 @@ function CreateProfile() {
       .then(res => {
         const p = res.data;
         setForm({ name: p.name || "", location: p.location || "", experience: p.experience || "", bio: p.bio || "", profileImage: p.profileImage || "", equipment: p.equipment || "" });
+        if (p.profileImage) setImagePreview(p.profileImage);
         if (p.selectedEvents) setSelectedEvents(p.selectedEvents);
         if (p.servicePricing?.length) setServices(p.servicePricing);
+        setIsExisting(true);
       })
       .catch(err => { if (err.response?.status !== 404) toast("Could not load profile.", "error"); })
       .finally(() => setLoading(false));
@@ -92,11 +136,27 @@ function CreateProfile() {
       .then(res => {
         const p = res.data.profile;
         setForm({ name: p.name || "", location: p.location || "", experience: p.experience || "", bio: p.bio || "", profileImage: p.profileImage || "", equipment: p.equipment || "" });
+        if (p.profileImage) setImagePreview(p.profileImage);
         if (p.selectedEvents) setSelectedEvents(p.selectedEvents);
         if (p.servicePricing?.length) setServices(p.servicePricing);
         toast("Profile saved successfully!", "success");
       })
       .catch(() => toast("Failed to save profile.", "error"));
+  };
+
+  const changePassword = () => {
+    const { currentPassword, newPassword, confirmPassword } = pwdForm;
+    if (!currentPassword || !newPassword || !confirmPassword) { toast("Please fill in all password fields.", "warning"); return; }
+    if (newPassword.length < 6) { toast("New password must be at least 6 characters.", "warning"); return; }
+    if (newPassword !== confirmPassword) { toast("Passwords do not match.", "warning"); return; }
+    setPwdLoading(true);
+    axios.post("http://localhost:5000/api/auth/change-password", { userId, currentPassword, newPassword })
+      .then(() => {
+        toast("Password changed successfully!", "success");
+        setPwdForm({ currentPassword: "", newPassword: "", confirmPassword: "" });
+      })
+      .catch(err => toast(err.response?.data?.message || "Failed to change password.", "error"))
+      .finally(() => setPwdLoading(false));
   };
 
   if (loading) return <DashboardLayout role="videographer"><style>{styles}</style><p style={{ color: "var(--muted)", fontStyle: "italic" }}>Loading...</p></DashboardLayout>;
@@ -118,7 +178,24 @@ function CreateProfile() {
           <div className="fc-field"><label className="fc-label">Location</label><input className="fc-input" name="location" placeholder="City, State" onChange={handleChange} value={form.location} /></div>
           <div className="fc-field"><label className="fc-label">Years of Experience</label><input className="fc-input" name="experience" placeholder="e.g. 5 years" onChange={handleChange} value={form.experience} /></div>
           <div className="fc-field"><label className="fc-label">Bio</label><textarea className="fc-textarea" name="bio" placeholder="Tell clients about yourself, your style, your passion..." onChange={handleChange} value={form.bio} /></div>
-          <div className="fc-field"><label className="fc-label">Profile Image URL</label><input className="fc-input" name="profileImage" placeholder="https://..." onChange={handleChange} value={form.profileImage} /></div>
+          <div className="fc-field">
+            <label className="fc-label">Profile Photo</label>
+            <div className={`img-upload-zone ${imagePreview ? "has-image" : ""}`}>
+              <input type="file" accept="image/*" onChange={handleImageUpload} />
+              {imagePreview ? (
+                <>
+                  <img src={imagePreview} alt="Profile preview" className="img-upload-preview" />
+                  <div className="img-upload-change">Click to Change Photo</div>
+                </>
+              ) : (
+                <>
+                  <div className="img-upload-icon">📷</div>
+                  <p className="img-upload-label">Click to upload a profile photo</p>
+                  <p className="img-upload-hint">JPG, PNG or WEBP — max 5MB</p>
+                </>
+              )}
+            </div>
+          </div>
         </div>
 
         <div className="form-section">
@@ -157,7 +234,29 @@ function CreateProfile() {
           </div>
         </div>
 
-        <RippleButton className="fc-btn-terra fc-btn-lg" onClick={save}>Save Profile</RippleButton>
+        <RippleButton className="fc-btn-terra fc-btn-lg" onClick={save}>{isExisting ? "Update Profile" : "Save Profile"}</RippleButton>
+
+        <div className="pwd-section">
+          <p className="pwd-section-title">Change Password</p>
+          <div className="fc-field">
+            <label className="fc-label">Current Password</label>
+            <input className="fc-input" type="password" placeholder="••••••••" value={pwdForm.currentPassword} onChange={e => setPwdForm({ ...pwdForm, currentPassword: e.target.value })} />
+          </div>
+          <div className="pwd-row">
+            <div className="fc-field">
+              <label className="fc-label">New Password</label>
+              <input className="fc-input" type="password" placeholder="••••••••" value={pwdForm.newPassword} onChange={e => setPwdForm({ ...pwdForm, newPassword: e.target.value })} />
+            </div>
+            <div className="fc-field">
+              <label className="fc-label">Confirm New Password</label>
+              <input className="fc-input" type="password" placeholder="••••••••" value={pwdForm.confirmPassword} onChange={e => setPwdForm({ ...pwdForm, confirmPassword: e.target.value })} />
+            </div>
+          </div>
+          <RippleButton className="fc-btn-outline fc-btn-sm" onClick={changePassword} disabled={pwdLoading}>
+            {pwdLoading ? "Updating…" : "Change Password"}
+          </RippleButton>
+        </div>
+
       </div>
     </DashboardLayout>
   );

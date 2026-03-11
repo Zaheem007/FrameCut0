@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { GLOBAL_CSS, RippleButton, toast } from "../theme";
 
-const EVENT_TYPES = ["Wedding", "Pre-Wedding", "Engagement", "Birthday", "Corporate", "Product Shoot", "Music Video", "Documentary", "Real Estate", "Other"];
 
 const styles = `
   ${GLOBAL_CSS}
@@ -24,11 +23,6 @@ const styles = `
   .booking-form-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 36px 32px; box-shadow: var(--shadow-md); animation: fadeUp 0.4s ease forwards; }
   .bf-heading { font-family: var(--ff-display); font-size: 26px; font-weight: 600; color: var(--plum); margin-bottom: 4px; }
   .bf-sub { font-size: 13px; color: var(--muted); font-weight: 300; margin-bottom: 32px; }
-
-  .event-chip-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-  .event-chip { padding: 6px 14px; border-radius: 99px; font-size: 11.5px; font-weight: 500; border: 1.5px solid var(--border); color: var(--muted); background: var(--surface2); cursor: pointer; transition: all 0.18s; }
-  .event-chip:hover { border-color: var(--violet); color: var(--violet); }
-  .event-chip.selected { background: var(--plum); border-color: var(--plum); color: var(--bg); font-weight: 600; }
 
   .service-select-list { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 4px; }
   .ssl-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; cursor: pointer; border-bottom: 1px solid var(--border); transition: background 0.15s; }
@@ -54,7 +48,6 @@ function Booking() {
   const clientEmail = localStorage.getItem("email");
   const [profile, setProfile] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
-  const [selectedEvent, setSelectedEvent] = useState("");
   const [form, setForm] = useState({ eventDate: "", eventLocation: "", notes: "" });
 
   useEffect(() => {
@@ -65,16 +58,13 @@ function Booking() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const eventsToShow = profile?.selectedEvents?.length ? profile.selectedEvents : EVENT_TYPES;
-
   const submit = () => {
-    if (!selectedEvent) { toast("Please select an event type.", "warning"); return; }
     if (!form.eventDate) { toast("Please choose a date.", "warning"); return; }
     if (!form.eventLocation) { toast("Please enter the event location.", "warning"); return; }
 
     axios.post("http://localhost:5000/api/bookings/create", {
       clientEmail, videographerId: id,
-      eventType: selectedEvent,
+      eventType: selectedService?.name || "",
       selectedService: selectedService?.name || "",
       agreedPrice: selectedService?.price || "",
       eventDate: form.eventDate,
@@ -99,7 +89,6 @@ function Booking() {
             <h2 className="bs-name">{profile?.name || "…"}</h2>
             <p className="bs-location">📍 {profile?.location || "…"}</p>
             <div className="bs-divider" />
-            <div className="bs-row"><span className="bs-row-label">Event</span><span className="bs-row-val">{selectedEvent || "—"}</span></div>
             <div className="bs-row"><span className="bs-row-label">Date</span><span className="bs-row-val">{form.eventDate || "—"}</span></div>
             <div className="bs-row"><span className="bs-row-label">Venue</span><span className="bs-row-val">{form.eventLocation || "—"}</span></div>
             {selectedService && <div className="bs-row"><span className="bs-row-label">Package</span><span className="bs-row-val">{selectedService.name}</span></div>}
@@ -113,15 +102,6 @@ function Booking() {
           <div className="booking-form-card">
             <h3 className="bf-heading">Book Now</h3>
             <p className="bf-sub">Fill in your event details below</p>
-
-            <div className="fc-field">
-              <label className="fc-label">Event Type</label>
-              <div className="event-chip-grid">
-                {eventsToShow.map(ev => (
-                  <div key={ev} className={`event-chip ${selectedEvent === ev ? "selected" : ""}`} onClick={() => setSelectedEvent(ev)}>{ev}</div>
-                ))}
-              </div>
-            </div>
 
             {profile?.servicePricing?.length > 0 && (
               <div className="fc-field">

@@ -135,9 +135,8 @@ function Profile() {
       <style>{styles}</style>
       <div className="profile-page">
         <div className="profile-inner">
-          <a className="back-link" onClick={() => navigate(-1)} style={{ cursor: "pointer" }}>← Back</a>
-
-          <div className="profile-hero">
+         <button className="back-link" onClick={() => navigate(-1)}>← Back</button>
+                <div className="profile-hero">
             {profile.profileImage
               ? <img className="ph-img" src={profile.profileImage} alt={profile.name} />
               : <div className="ph-img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="var(--plum)" strokeWidth="1"><path d="M15 10l4.553-2.277A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>

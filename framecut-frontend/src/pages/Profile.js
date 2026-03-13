@@ -50,7 +50,11 @@ const styles = `
   .port-link:hover { color: var(--terra2); }
 
   /* Review form */
-  .review-form { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
+  .avg-rating-bar { display: flex; align-items: center; gap: 16px; background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+  .avg-score { font-family: var(--ff-display); font-size: 42px; font-weight: 700; color: var(--plum); line-height: 1; }
+  .avg-stars { color: var(--terra); font-size: 20px; letter-spacing: 3px; margin-bottom: 4px; }
+  .avg-count { font-size: 12px; color: var(--muted); font-weight: 300; }
+  .avg-divider { width: 1px; height: 48px; background: var(--border); flex-shrink: 0; } background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
   .rf-title { font-family: var(--ff-display); font-size: 17px; font-weight: 600; color: var(--plum); margin-bottom: 16px; }
   .star-row { display: flex; gap: 6px; margin-bottom: 16px; }
   .star-btn { font-size: 26px; background: none; border: none; cursor: pointer; color: var(--border2); transition: color 0.15s, transform 0.15s; line-height: 1; }
@@ -215,6 +219,22 @@ function Profile() {
               <div className="fc-section-line" />
               <span className="fc-section-count">{reviews.length} review{reviews.length !== 1 ? "s" : ""}</span>
             </div>
+
+            {reviews.length > 0 && (() => {
+              const avg = (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length);
+              const rounded = Math.round(avg * 10) / 10;
+              const fullStars = Math.round(avg);
+              return (
+                <div className="avg-rating-bar">
+                  <div className="avg-score">{rounded.toFixed(1)}</div>
+                  <div className="avg-divider" />
+                  <div>
+                    <div className="avg-stars">{"★".repeat(fullStars)}{"☆".repeat(5 - fullStars)}</div>
+                    <div className="avg-count">{reviews.length} review{reviews.length !== 1 ? "s" : ""}</div>
+                  </div>
+                </div>
+              );
+            })()}
 
             {/* Write a review — visible to clients only */}
             {role === "client" && (

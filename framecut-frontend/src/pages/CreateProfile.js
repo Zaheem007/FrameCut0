@@ -49,6 +49,28 @@ const styles = `
   .pwd-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media (max-width: 600px) { .pwd-row { grid-template-columns: 1fr; } }
 
+  /* ── Availability Calendar ── */
+  .avail-section { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 26px; margin-top: 32px; }
+  .avail-title { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--violet); margin-bottom: 6px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .avail-subtitle { font-size: 12px; color: var(--muted); font-weight: 300; margin-bottom: 20px; }
+  .cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .cal-nav-btn { background: none; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 5px 12px; cursor: pointer; font-size: 14px; color: var(--plum); transition: all 0.2s; }
+  .cal-nav-btn:hover { background: var(--plum); color: var(--bg); border-color: var(--plum); }
+  .cal-month { font-family: var(--ff-display); font-size: 17px; font-weight: 600; color: var(--plum); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-day-label { text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 6px 0; }
+  .cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 12.5px; font-weight: 400; cursor: pointer; transition: all 0.15s; border: 1.5px solid transparent; color: var(--plum); user-select: none; }
+  .cal-day:hover:not(.cal-empty):not(.cal-past) { border-color: var(--violet); background: rgba(124,92,158,0.07); }
+  .cal-day.cal-available { background: rgba(74,140,110,0.12); border-color: rgba(74,140,110,0.35); color: #2d7a57; font-weight: 600; }
+  .cal-day.cal-available:hover { background: rgba(74,140,110,0.22); }
+  .cal-day.cal-past { color: var(--border2); cursor: default; }
+  .cal-day.cal-empty { cursor: default; }
+  .cal-day.cal-today { border-color: var(--violet); font-weight: 700; }
+  .cal-legend { display: flex; gap: 18px; margin-top: 14px; }
+  .cal-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); font-weight: 400; }
+  .cal-legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .avail-count { font-size: 12px; color: var(--violet); font-weight: 600; margin-top: 14px; }
+
   .img-upload-zone {
     border: 2px dashed var(--border2); border-radius: var(--radius);
     padding: 28px 20px; text-align: center; cursor: pointer;
@@ -84,6 +106,8 @@ function CreateProfile() {
   const [imagePreview, setImagePreview] = useState("");
   const [pwdForm, setPwdForm] = useState({ currentPassword: "", newPassword: "", confirmPassword: "" });
   const [pwdLoading, setPwdLoading] = useState(false);
+  const [availableDates, setAvailableDates] = useState([]);
+  const [calMonth, setCalMonth] = useState(new Date());
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -108,6 +132,7 @@ function CreateProfile() {
         if (p.profileImage) setImagePreview(p.profileImage);
         if (p.selectedEvents) setSelectedEvents(p.selectedEvents);
         if (p.servicePricing?.length) setServices(p.servicePricing);
+        if (p.availableDates?.length) setAvailableDates(p.availableDates);
         setIsExisting(true);
       })
       .catch(err => { if (err.response?.status !== 404) toast("Could not load profile.", "error"); })
@@ -122,6 +147,38 @@ function CreateProfile() {
   const addService = () => setServices([...services, { name: "", price: "" }]);
   const removeService = (i) => setServices(services.filter((_, idx) => idx !== i));
 
+  // Calendar helpers
+  const toDateStr = (y, m, d) => `${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+  const todayStr = toDateStr(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+  const toggleDate = (str) => {
+    if (str < todayStr) return;
+    setAvailableDates(prev => prev.includes(str) ? prev.filter(d => d !== str) : [...prev, str]);
+  };
+  const prevMonth = () => setCalMonth(d => new Date(d.getFullYear(), d.getMonth() - 1, 1));
+  const nextMonth = () => setCalMonth(d => new Date(d.getFullYear(), d.getMonth() + 1, 1));
+  const calDays = () => {
+    const y = calMonth.getFullYear(), m = calMonth.getMonth();
+    const firstDay = new Date(y, m, 1).getDay();
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    return { y, m, firstDay, daysInMonth };
+  };
+  const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const DAY_LABELS = ["Su","Mo","Tu","We","Th","Fr","Sa"];
+
+  const saveAvailability = () => {
+    if (!userId) return;
+    axios.post("http://localhost:5000/api/profiles/create", {
+      ...form, userId,
+      services: selectedEvents.join(", "),
+      pricing: services.filter(s => s.name).length ? Math.min(...services.filter(s => s.name).map(s => Number(s.price) || 0)) : 0,
+      servicePricing: services.filter(s => s.name),
+      selectedEvents,
+      availableDates,
+    })
+      .then(() => toast("Availability updated!", "success"))
+      .catch(() => toast("Failed to update availability.", "error"));
+  };
+
   const save = () => {
     if (!form.name || !form.location) { toast("Name and location are required.", "warning"); return; }
     const validServices = services.filter(s => s.name);
@@ -132,6 +189,7 @@ function CreateProfile() {
       pricing,
       servicePricing: validServices,
       selectedEvents,
+      availableDates,
     })
       .then(res => {
         const p = res.data.profile;
@@ -235,6 +293,56 @@ function CreateProfile() {
         </div>
 
         <RippleButton className="fc-btn-terra fc-btn-lg" onClick={save}>{isExisting ? "Update Profile" : "Save Profile"}</RippleButton>
+
+        {/* ── Availability Calendar ── */}
+        <div className="avail-section">
+          <p className="avail-title">Availability Calendar</p>
+          <p className="avail-subtitle">Click dates to mark yourself as available. Click again to remove. Save when done.</p>
+
+          <div className="cal-nav">
+            <button className="cal-nav-btn" onClick={prevMonth}>‹</button>
+            <span className="cal-month">{MONTH_NAMES[calMonth.getMonth()]} {calMonth.getFullYear()}</span>
+            <button className="cal-nav-btn" onClick={nextMonth}>›</button>
+          </div>
+
+          <div className="cal-grid">
+            {DAY_LABELS.map(d => <div key={d} className="cal-day-label">{d}</div>)}
+            {(() => {
+              const { y, m, firstDay, daysInMonth } = calDays();
+              const cells = [];
+              for (let i = 0; i < firstDay; i++) cells.push(<div key={`e${i}`} className="cal-day cal-empty" />);
+              for (let d = 1; d <= daysInMonth; d++) {
+                const str = toDateStr(y, m, d);
+                const isPast = str < todayStr;
+                const isAvail = availableDates.includes(str);
+                const isToday = str === todayStr;
+                cells.push(
+                  <div
+                    key={str}
+                    className={`cal-day ${isAvail ? "cal-available" : ""} ${isPast ? "cal-past" : ""} ${isToday ? "cal-today" : ""}`}
+                    onClick={() => toggleDate(str)}
+                    title={isAvail ? "Available — click to remove" : isPast ? "Past date" : "Click to mark available"}
+                  >{d}</div>
+                );
+              }
+              return cells;
+            })()}
+          </div>
+
+          <div className="cal-legend">
+            <div className="cal-legend-item"><div className="cal-legend-dot" style={{ background: "rgba(74,140,110,0.25)", border: "1.5px solid rgba(74,140,110,0.4)" }} />Available</div>
+            <div className="cal-legend-item"><div className="cal-legend-dot" style={{ background: "var(--surface2)", border: "1.5px solid var(--border)" }} />Not set</div>
+            <div className="cal-legend-item"><div className="cal-legend-dot" style={{ border: "1.5px solid var(--violet)", background: "transparent" }} />Today</div>
+          </div>
+
+          {availableDates.length > 0 && (
+            <p className="avail-count">✓ {availableDates.filter(d => d >= todayStr).length} upcoming date{availableDates.filter(d => d >= todayStr).length !== 1 ? "s" : ""} marked available</p>
+          )}
+
+          <RippleButton className="fc-btn-primary fc-btn-sm" onClick={saveAvailability} style={{ marginTop: "16px" }}>
+            Save Availability
+          </RippleButton>
+        </div>
 
         <div className="pwd-section">
           <p className="pwd-section-title">Change Password</p>

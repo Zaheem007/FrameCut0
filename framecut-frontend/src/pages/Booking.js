@@ -36,6 +36,25 @@ const styles = `
 
   .fc-textarea { min-height: 80px; }
 
+  .avail-cal-wrap { margin-bottom: 4px; }
+  .avail-cal-title { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: block; }
+  .avail-cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .avail-cal-nav-btn { background: none; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 4px 10px; cursor: pointer; font-size: 13px; color: var(--plum); transition: all 0.2s; }
+  .avail-cal-nav-btn:hover { background: var(--plum); color: var(--bg); border-color: var(--plum); }
+  .avail-cal-month { font-family: var(--ff-display); font-size: 15px; font-weight: 600; color: var(--plum); }
+  .avail-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+  .avail-day-label { text-align: center; font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 5px 0; }
+  .avail-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 5px; font-size: 12px; font-weight: 400; border: 1.5px solid transparent; color: var(--muted); user-select: none; }
+  .avail-day.available { background: rgba(74,140,110,0.1); border-color: rgba(74,140,110,0.3); color: #2d7a57; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .avail-day.available:hover { background: rgba(74,140,110,0.22); border-color: rgba(74,140,110,0.5); }
+  .avail-day.available.selected { background: #2d7a57; color: #fff; border-color: #2d7a57; }
+  .avail-day.past { color: var(--border); }
+  .avail-day.today { border-color: var(--violet); }
+  .avail-no-dates { font-size: 12.5px; color: var(--muted); font-style: italic; padding: 12px 0; }
+  .avail-legend { display: flex; gap: 14px; margin-top: 10px; }
+  .avail-legend-item { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: var(--muted); }
+  .avail-legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
   @media (max-width: 720px) {
     .booking-wrap { grid-template-columns: 1fr; }
     .booking-summary { position: static; }
@@ -49,6 +68,7 @@ function Booking() {
   const [profile, setProfile] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
   const [form, setForm] = useState({ eventDate: "", eventLocation: "", notes: "" });
+  const [calMonth, setCalMonth] = useState(new Date());
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/profiles/${id}`)
@@ -57,6 +77,20 @@ function Booking() {
   }, [id]);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const toDateStr = (y, m, d) => `${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+  const todayStr = toDateStr(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+  const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const DAY_LABELS = ["Su","Mo","Tu","We","Th","Fr","Sa"];
+  const calDays = () => {
+    const y = calMonth.getFullYear(), m = calMonth.getMonth();
+    return { y, m, firstDay: new Date(y, m, 1).getDay(), daysInMonth: new Date(y, m + 1, 0).getDate() };
+  };
+  const availSet = new Set(profile?.availableDates || []);
+  const selectDate = (str) => {
+    if (!availSet.has(str)) return;
+    setForm(f => ({ ...f, eventDate: str }));
+  };
 
   const submit = () => {
     if (!form.eventDate) { toast("Please choose a date.", "warning"); return; }
@@ -119,8 +153,51 @@ function Booking() {
             )}
 
             <div className="fc-field">
-              <label className="fc-label">Event Date</label>
-              <input type="date" className="fc-input" name="eventDate" onChange={handleChange} />
+              <label className="fc-label">Select Date</label>
+              {profile?.availableDates?.length > 0 ? (
+                <div className="avail-cal-wrap">
+                  <div className="avail-cal-nav">
+                    <button className="avail-cal-nav-btn" onClick={() => setCalMonth(d => new Date(d.getFullYear(), d.getMonth() - 1, 1))}>‹</button>
+                    <span className="avail-cal-month">{MONTH_NAMES[calMonth.getMonth()]} {calMonth.getFullYear()}</span>
+                    <button className="avail-cal-nav-btn" onClick={() => setCalMonth(d => new Date(d.getFullYear(), d.getMonth() + 1, 1))}>›</button>
+                  </div>
+                  <div className="avail-cal-grid">
+                    {DAY_LABELS.map(d => <div key={d} className="avail-day-label">{d}</div>)}
+                    {(() => {
+                      const { y, m, firstDay, daysInMonth } = calDays();
+                      const cells = [];
+                      for (let i = 0; i < firstDay; i++) cells.push(<div key={`e${i}`} className="avail-day" />);
+                      for (let d = 1; d <= daysInMonth; d++) {
+                        const str = toDateStr(y, m, d);
+                        const isAvail = availSet.has(str);
+                        const isPast = str < todayStr;
+                        const isSelected = form.eventDate === str;
+                        const isToday = str === todayStr;
+                        cells.push(
+                          <div
+                            key={str}
+                            className={`avail-day ${isAvail && !isPast ? "available" : ""} ${isPast ? "past" : ""} ${isToday ? "today" : ""} ${isSelected ? "selected" : ""}`}
+                            onClick={() => !isPast && selectDate(str)}
+                            title={isAvail && !isPast ? "Available — click to select" : !isAvail && !isPast ? "Not available" : ""}
+                          >{d}</div>
+                        );
+                      }
+                      return cells;
+                    })()}
+                  </div>
+                  <div className="avail-legend">
+                    <div className="avail-legend-item"><div className="avail-legend-dot" style={{ background: "rgba(74,140,110,0.2)", border: "1px solid rgba(74,140,110,0.4)" }} />Available</div>
+                    <div className="avail-legend-item"><div className="avail-legend-dot" style={{ background: "#2d7a57" }} />Selected</div>
+                    <div className="avail-legend-item"><div className="avail-legend-dot" style={{ background: "var(--bg2)" }} />Unavailable</div>
+                  </div>
+                  {form.eventDate && <p style={{ fontSize: "12px", color: "#2d7a57", fontWeight: 600, marginTop: "10px" }}>✓ Selected: {form.eventDate}</p>}
+                </div>
+              ) : (
+                <>
+                  <p className="avail-no-dates">This videographer hasn't set their availability yet. Pick any date below.</p>
+                  <input type="date" className="fc-input" name="eventDate" value={form.eventDate} onChange={handleChange} min={todayStr} />
+                </>
+              )}
             </div>
 
             <div className="fc-field">

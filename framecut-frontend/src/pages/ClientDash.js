@@ -22,11 +22,15 @@ const styles = `
   .cd-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
   .cd-card:hover { border-color: var(--violet); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
 
-  .cd-img { height: 190px; overflow: hidden; background: var(--bg2); }
+  .cd-img { height: 190px; overflow: hidden; background: var(--bg2); position: relative; }
   .cd-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
   .cd-card:hover .cd-img img { transform: scale(1.05); }
   .cd-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--bg2); }
   .cd-img-ph svg { width: 38px; height: 38px; opacity: 0.15; }
+  .cd-rating-badge { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.62); backdrop-filter: blur(4px); border-radius: 20px; padding: 4px 10px; display: flex; align-items: center; gap: 5px; }
+  .cd-rating-star { color: #f5c842; font-size: 12px; }
+  .cd-rating-score { color: #fff; font-size: 12px; font-weight: 700; font-family: var(--ff-ui); }
+  .cd-rating-count { color: rgba(255,255,255,0.6); font-size: 10px; font-family: var(--ff-ui); }
 
   .cd-body { padding: 18px 20px 22px; }
   .cd-name { font-family: var(--ff-display); font-size: 17px; font-weight: 600; color: var(--plum); margin-bottom: 10px; }
@@ -45,10 +49,12 @@ const styles = `
 function ClientDashboard() {
   const navigate = useNavigate();
   const [profiles, setProfiles] = useState([]);
+  const [ratings, setRatings] = useState({});
   const [nameSearch, setNameSearch] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:5000/api/profiles").then(res => setProfiles(res.data));
+    axios.get("http://localhost:5000/api/reviews/averages/all").then(res => setRatings(res.data)).catch(() => {});
   }, []);
 
   const filtered = profiles.filter(p =>
@@ -81,13 +87,22 @@ function ClientDashboard() {
       <div className="cd-grid">
         {filtered.length === 0 ? (
           <div className="fc-empty" style={{ gridColumn: "1/-1" }}>No videographers found.</div>
-        ) : filtered.map((p, i) => (
+        ) : filtered.map((p, i) => {
+          const rData = ratings[p._id];
+          return (
           <div className={`cd-card anim-fadeup anim-d${Math.min(i + 1, 6)}`} key={p._id}>
             <div className="cd-img">
               {p.profileImage
                 ? <img src={p.profileImage} alt={p.name} />
                 : <div className="cd-img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="var(--plum)" strokeWidth="1"><path d="M15 10l4.553-2.277A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
               }
+              {rData && (
+                <div className="cd-rating-badge">
+                  <span className="cd-rating-star">★</span>
+                  <span className="cd-rating-score">{rData.avg.toFixed(1)}</span>
+                  <span className="cd-rating-count">({rData.count})</span>
+                </div>
+              )}
             </div>
             <div className="cd-body">
               <h5 className="cd-name">{p.name}</h5>
@@ -106,7 +121,8 @@ function ClientDashboard() {
               <Link to={`/profile/${p._id}`} className="cd-btn-view">View Profile</Link>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </DashboardLayout>
   );

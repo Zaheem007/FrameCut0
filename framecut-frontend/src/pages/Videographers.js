@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { GLOBAL_CSS } from "../theme";
 
 const EVENT_TYPES = ["All", "Wedding", "Pre-Wedding", "Engagement", "Birthday", "Corporate", "Product Shoot", "Music Video", "Documentary", "Real Estate"];
+const RATING_FILTERS = ["All", "4★ & up", "3★ & up", "2★ & up"];
 
 const styles = `
   ${GLOBAL_CSS}
@@ -29,6 +30,7 @@ const styles = `
   .chip { padding: 5px 13px; border-radius: 99px; font-size: 11.5px; font-weight: 500; border: 1.5px solid var(--border); color: var(--muted); background: var(--surface2); cursor: pointer; transition: all 0.18s; user-select: none; white-space: nowrap; }
   .chip:hover { border-color: var(--violet); color: var(--violet); }
   .chip.active { background: var(--plum); border-color: var(--plum); color: var(--bg); font-weight: 600; }
+  .chip.rating-chip.active { background: var(--terra); border-color: var(--terra); }
 
   .results-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
   .results-count { font-size: 12px; color: var(--muted); font-weight: 300; }
@@ -38,11 +40,21 @@ const styles = `
   .vcard { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
   .vcard:hover { border-color: var(--violet); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
 
-  .vcard-img { height: 200px; overflow: hidden; background: var(--bg2); }
+  .vcard-img { height: 200px; overflow: hidden; background: var(--bg2); position: relative; }
   .vcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
   .vcard:hover .vcard-img img { transform: scale(1.05); }
   .vcard-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
   .vcard-img-ph svg { width: 40px; height: 40px; opacity: 0.15; }
+
+  .vcard-rating-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(0,0,0,0.62); backdrop-filter: blur(4px);
+    border-radius: 20px; padding: 4px 10px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .vcard-rating-star { color: #f5c842; font-size: 12px; }
+  .vcard-rating-score { color: #fff; font-size: 12px; font-weight: 700; font-family: var(--ff-ui); }
+  .vcard-rating-count { color: rgba(255,255,255,0.6); font-size: 10px; font-weight: 400; font-family: var(--ff-ui); }
 
   .vcard-body { padding: 18px 20px 22px; }
   .vcard-name { font-family: var(--ff-display); font-size: 18px; font-weight: 600; color: var(--plum); margin-bottom: 10px; }
@@ -59,9 +71,11 @@ const styles = `
 function Videographers() {
   const navigate = useNavigate();
   const [profiles, setProfiles] = useState([]);
+  const [ratings, setRatings] = useState({});
   const [location, setLocation] = useState("");
   const [nameSearch, setNameSearch] = useState("");
   const [activeEvent, setActiveEvent] = useState("All");
+  const [activeRating, setActiveRating] = useState("All");
 
   const fetchProfiles = useCallback(() => {
     axios.get(`http://localhost:5000/api/profiles?location=${location}`)
@@ -71,9 +85,27 @@ function Videographers() {
 
   useEffect(() => { fetchProfiles(); }, [fetchProfiles]);
 
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/reviews/averages/all")
+      .then(res => setRatings(res.data))
+      .catch(() => {});
+  }, []);
+
+  const getRatingMin = (filter) => {
+    if (filter === "4★ & up") return 4;
+    if (filter === "3★ & up") return 3;
+    if (filter === "2★ & up") return 2;
+    return 0;
+  };
+
   const filtered = profiles
     .filter(p => activeEvent === "All" || p.selectedEvents?.includes(activeEvent) || p.services?.includes(activeEvent))
-    .filter(p => !nameSearch || p.name?.toLowerCase().includes(nameSearch.toLowerCase()));
+    .filter(p => !nameSearch || p.name?.toLowerCase().includes(nameSearch.toLowerCase()))
+    .filter(p => {
+      if (activeRating === "All") return true;
+      const r = ratings[p._id]?.avg || 0;
+      return r >= getRatingMin(activeRating);
+    });
 
   return (
     <>
@@ -108,11 +140,21 @@ function Videographers() {
                 </div>
               </div>
             </div>
-            <div>
+
+            <div style={{ marginBottom: "16px" }}>
               <span className="filter-label" style={{ marginBottom: "10px", display: "block" }}>Filter by Event Type</span>
               <div className="chip-grid">
                 {EVENT_TYPES.map(ev => (
                   <div key={ev} className={`chip ${activeEvent === ev ? "active" : ""}`} onClick={() => setActiveEvent(ev)}>{ev}</div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <span className="filter-label" style={{ marginBottom: "10px", display: "block" }}>Filter by Rating</span>
+              <div className="chip-grid">
+                {RATING_FILTERS.map(r => (
+                  <div key={r} className={`chip rating-chip ${activeRating === r ? "active" : ""}`} onClick={() => setActiveRating(r)}>{r}</div>
                 ))}
               </div>
             </div>
@@ -122,6 +164,7 @@ function Videographers() {
             <span className="results-count">
               {filtered.length} result{filtered.length !== 1 ? "s" : ""}
               {activeEvent !== "All" ? ` for "${activeEvent}"` : ""}
+              {activeRating !== "All" ? ` · ${activeRating}` : ""}
               {nameSearch ? ` matching "${nameSearch}"` : ""}
               {location ? ` in "${location}"` : ""}
             </span>
@@ -130,32 +173,42 @@ function Videographers() {
           <div className="vlist-grid">
             {filtered.length === 0 ? (
               <div className="fc-empty" style={{ gridColumn: "1/-1" }}>No videographers found for your filters.</div>
-            ) : filtered.map((p, i) => (
-              <div className={`vcard anim-fadeup anim-d${Math.min(i + 1, 6)}`} key={p._id}>
-                <div className="vcard-img">
-                  {p.profileImage
-                    ? <img src={p.profileImage} alt={p.name} />
-                    : <div className="vcard-img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="var(--plum)" strokeWidth="1"><path d="M15 10l4.553-2.277A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
-                  }
-                </div>
-                <div className="vcard-body">
-                  <h5 className="vcard-name">{p.name}</h5>
-                  <div className="vcard-meta">
-                    <span className="vcard-meta-item">📍 {p.location}</span>
-                    {p.servicePricing?.length > 0
-                      ? <span className="vcard-meta-item vcard-price">From ₹{Math.min(...p.servicePricing.map(s => Number(s.price) || 0)).toLocaleString()}</span>
-                      : p.pricing ? <span className="vcard-meta-item vcard-price">₹{p.pricing}</span> : null}
+            ) : filtered.map((p, i) => {
+              const rData = ratings[p._id];
+              return (
+                <div className={`vcard anim-fadeup anim-d${Math.min(i + 1, 6)}`} key={p._id}>
+                  <div className="vcard-img">
+                    {p.profileImage
+                      ? <img src={p.profileImage} alt={p.name} />
+                      : <div className="vcard-img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="var(--plum)" strokeWidth="1"><path d="M15 10l4.553-2.277A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
+                    }
+                    {rData && (
+                      <div className="vcard-rating-badge">
+                        <span className="vcard-rating-star">★</span>
+                        <span className="vcard-rating-score">{rData.avg.toFixed(1)}</span>
+                        <span className="vcard-rating-count">({rData.count})</span>
+                      </div>
+                    )}
                   </div>
-                  {p.selectedEvents?.length > 0 && (
-                    <div className="vcard-events">
-                      {p.selectedEvents.slice(0, 3).map(ev => <span key={ev} className="vcard-event-chip">{ev}</span>)}
-                      {p.selectedEvents.length > 3 && <span className="vcard-event-chip">+{p.selectedEvents.length - 3}</span>}
+                  <div className="vcard-body">
+                    <h5 className="vcard-name">{p.name}</h5>
+                    <div className="vcard-meta">
+                      <span className="vcard-meta-item">📍 {p.location}</span>
+                      {p.servicePricing?.length > 0
+                        ? <span className="vcard-meta-item vcard-price">From ₹{Math.min(...p.servicePricing.map(s => Number(s.price) || 0)).toLocaleString()}</span>
+                        : p.pricing ? <span className="vcard-meta-item vcard-price">₹{p.pricing}</span> : null}
                     </div>
-                  )}
-                  <Link to={`/profile/${p._id}`} className="btn-view">View Profile</Link>
+                    {p.selectedEvents?.length > 0 && (
+                      <div className="vcard-events">
+                        {p.selectedEvents.slice(0, 3).map(ev => <span key={ev} className="vcard-event-chip">{ev}</span>)}
+                        {p.selectedEvents.length > 3 && <span className="vcard-event-chip">+{p.selectedEvents.length - 3}</span>}
+                      </div>
+                    )}
+                    <Link to={`/profile/${p._id}`} className="btn-view">View Profile</Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

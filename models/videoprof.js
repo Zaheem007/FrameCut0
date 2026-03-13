@@ -17,7 +17,8 @@ const videoprofiles = new mongoose.Schema({
   },
   bio:            { type: String },
   profileImage:   { type: String },
-  equipment:      { type: String },         
+  equipment:      { type: String },
+  availableDates: { type: [String], default: [] }, 
 });
 
 module.exports = mongoose.models.VideographerProfile || mongoose.model("VideographerProfile", videoprofiles);

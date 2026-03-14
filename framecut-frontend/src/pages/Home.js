@@ -53,7 +53,7 @@ function MyBookings() {
   const clientEmail = localStorage.getItem("email");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/bookings")
+    axios.get("https://framecut-rqms.onrender.com/api/bookings")
       .then(res => setBookings(res.data.filter(b => b.clientEmail === clientEmail)))
       .catch(err => console.log(err));
   }, [clientEmail]);

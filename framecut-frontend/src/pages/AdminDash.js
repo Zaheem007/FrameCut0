@@ -49,13 +49,13 @@ function AdminDashboard() {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/profiles").then(r => setProfiles(r.data));
-    axios.get("http://localhost:5000/api/bookings").then(r => setBookings(r.data));
+    axios.get("https://framecut-rqms.onrender.com/api/profiles").then(r => setProfiles(r.data));
+    axios.get("https://framecut-rqms.onrender.com/api/bookings").then(r => setBookings(r.data));
   }, []);
 
   const deleteProfile = (id) => {
     if (!window.confirm("Delete this profile permanently?")) return;
-    axios.delete(`http://localhost:5000/api/profiles/delete/${id}`, {
+    axios.delete(`https://framecut-rqms.onrender.com/api/profiles/delete/${id}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     })
       .then(() => { setProfiles(profiles.filter(p => p._id !== id)); toast("Profile deleted.", "info"); })

@@ -66,14 +66,14 @@ function VideographerDashboard() {
 
   useEffect(() => {
     if (!userId) return;
-    axios.get(`http://localhost:5000/api/profiles/user/${userId}`)
-      .then(res => axios.get(`http://localhost:5000/api/bookings/videographer/${res.data._id}`))
+    axios.get(`https://framecut-rqms.onrender.com/api/profiles/user/${userId}`)
+      .then(res => axios.get(`https://framecut-rqms.onrender.com/api/bookings/videographer/${res.data._id}`))
       .then(res => setBookings(res.data))
       .catch(() => setNoProfile(true));
   }, [userId]);
 
   const updateStatus = (id, status) => {
-    axios.put(`http://localhost:5000/api/bookings/update/${id}`, { status })
+    axios.put(`https://framecut-rqms.onrender.com/api/bookings/update/${id}`, { status })
       .then(() => {
         setBookings(bookings.map(b => b._id === id ? { ...b, status } : b));
         toast(`Booking ${status.toLowerCase()} successfully.`, status === "Approved" ? "success" : "info");

@@ -123,7 +123,7 @@ function CreateProfile() {
 
   useEffect(() => {
     if (!userId) { setLoading(false); return; }
-    axios.get(`http://localhost:5000/api/profiles/user/${userId}`, {
+    axios.get(`https://framecut-rqms.onrender.com/api/profiles/user/${userId}`, {
       headers: { "Cache-Control": "no-cache", Pragma: "no-cache" }
     })
       .then(res => {
@@ -167,7 +167,7 @@ function CreateProfile() {
 
   const saveAvailability = () => {
     if (!userId) return;
-    axios.post("http://localhost:5000/api/profiles/create", {
+    axios.post("https://framecut-rqms.onrender.com/api/profiles/create", {
       ...form, userId,
       services: selectedEvents.join(", "),
       pricing: services.filter(s => s.name).length ? Math.min(...services.filter(s => s.name).map(s => Number(s.price) || 0)) : 0,
@@ -183,7 +183,7 @@ function CreateProfile() {
     if (!form.name || !form.location) { toast("Name and location are required.", "warning"); return; }
     const validServices = services.filter(s => s.name);
     const pricing = validServices.length ? Math.min(...validServices.map(s => Number(s.price) || 0)) : 0;
-    axios.post("http://localhost:5000/api/profiles/create", {
+    axios.post("https://framecut-rqms.onrender.com/api/profiles/create", {
       ...form, userId,
       services: selectedEvents.join(", "),
       pricing,
@@ -208,7 +208,7 @@ function CreateProfile() {
     if (newPassword.length < 6) { toast("New password must be at least 6 characters.", "warning"); return; }
     if (newPassword !== confirmPassword) { toast("Passwords do not match.", "warning"); return; }
     setPwdLoading(true);
-    axios.post("http://localhost:5000/api/auth/change-password", { userId, currentPassword, newPassword })
+    axios.post("https://framecut-rqms.onrender.com/api/auth/change-password", { userId, currentPassword, newPassword })
       .then(() => {
         toast("Password changed successfully!", "success");
         setPwdForm({ currentPassword: "", newPassword: "", confirmPassword: "" });

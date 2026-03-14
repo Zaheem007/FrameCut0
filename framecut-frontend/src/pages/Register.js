@@ -47,7 +47,7 @@ function Register() {
 
   const register = () => {
     if (!form.name || !form.email || !form.password) { toast("Please fill in all fields.", "warning"); return; }
-    axios.post("http://localhost:5000/api/auth/register", form)
+    axios.post("https://framecut-rqms.onrender.com/api/auth/register", form)
       .then(() => { toast("Account created! Please sign in.", "success", "Welcome"); setTimeout(() => navigate("/"), 800); })
       .catch(err => toast(err.response?.data?.message || "Registration failed.", "error"));
   };

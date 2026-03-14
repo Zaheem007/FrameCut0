@@ -76,7 +76,7 @@ function Login() {
   const login = () => {
     if (!form.email || !form.password) { toast("Please fill in all fields.", "warning"); return; }
     setLoading(true);
-    axios.post("http://localhost:5000/api/auth/login", form)
+    axios.post("https://framecut-rqms.onrender.com/api/auth/login", form)
       .then(res => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("role", res.data.role);

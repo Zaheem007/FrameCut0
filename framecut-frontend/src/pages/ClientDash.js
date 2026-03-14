@@ -53,8 +53,8 @@ function ClientDashboard() {
   const [nameSearch, setNameSearch] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/profiles").then(res => setProfiles(res.data));
-    axios.get("http://localhost:5000/api/reviews/averages/all").then(res => setRatings(res.data)).catch(() => {});
+    axios.get("https://framecut-rqms.onrender.com/api/profiles").then(res => setProfiles(res.data));
+    axios.get("https://framecut-rqms.onrender.com/api/reviews/averages/all").then(res => setRatings(res.data)).catch(() => {});
   }, []);
 
   const filtered = profiles.filter(p =>

@@ -83,15 +83,15 @@ function Profile() {
   const role = localStorage.getItem("role");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/profiles/${id}`).then(r => setProfile(r.data));
-    axios.get(`http://localhost:5000/api/portfolio/${id}`).then(r => setPortfolio(r.data));
-    axios.get(`http://localhost:5000/api/reviews/${id}`).then(r => setReviews(r.data));
+    axios.get(`https://framecut-rqms.onrender.com/api/profiles/${id}`).then(r => setProfile(r.data));
+    axios.get(`https://framecut-rqms.onrender.com/api/portfolio/${id}`).then(r => setPortfolio(r.data));
+    axios.get(`https://framecut-rqms.onrender.com/api/reviews/${id}`).then(r => setReviews(r.data));
   }, [id]);
 
   const submitReview = () => {
     if (!reviewForm.clientName) { toast("Please enter your name.", "warning"); return; }
     if (!reviewForm.rating) { toast("Please select a rating.", "warning"); return; }
-    axios.post("http://localhost:5000/api/reviews/add", {
+    axios.post("https://framecut-rqms.onrender.com/api/reviews/add", {
       videographerId: id,
       bookingId: id, // simplified — ideally link to actual booking
       clientName: reviewForm.clientName,

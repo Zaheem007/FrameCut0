@@ -57,10 +57,10 @@ function Portfolio() {
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/profiles/user/${userId}`)
+    axios.get(`https://framecut-rqms.onrender.com/api/profiles/user/${userId}`)
       .then(res => {
         setProfileId(res.data._id);
-        return axios.get(`http://localhost:5000/api/portfolio/${res.data._id}`);
+        return axios.get(`https://framecut-rqms.onrender.com/api/portfolio/${res.data._id}`);
       })
       .then(res => setItems(res.data))
       .catch(() => toast("Please create your profile before adding portfolio items.", "warning"));
@@ -98,7 +98,7 @@ function Portfolio() {
     setUploading(true);
     const reader = new FileReader();
     reader.onloadend = () => {
-      axios.post("http://localhost:5000/api/portfolio/add", {
+      axios.post("https://framecut-rqms.onrender.com/api/portfolio/add", {
         videographerId: profileId,
         title: form.title,
         description: form.description,
@@ -119,7 +119,7 @@ function Portfolio() {
 
   const deleteItem = (id) => {
     if (!window.confirm("Remove this item?")) return;
-    axios.delete(`http://localhost:5000/api/portfolio/${id}`)
+    axios.delete(`https://framecut-rqms.onrender.com/api/portfolio/${id}`)
       .then(() => { setItems(items.filter(i => i._id !== id)); toast("Item removed.", "info"); })
       .catch(() => toast("Failed to delete.", "error"));
   };

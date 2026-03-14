@@ -78,7 +78,7 @@ function Videographers() {
   const [activeRating, setActiveRating] = useState("All");
 
   const fetchProfiles = useCallback(() => {
-    axios.get(`http://localhost:5000/api/profiles?location=${location}`)
+    axios.get(`https://framecut-rqms.onrender.com/api/profiles?location=${location}`)
       .then(res => setProfiles(res.data))
       .catch(err => console.log(err));
   }, [location]);
@@ -86,7 +86,7 @@ function Videographers() {
   useEffect(() => { fetchProfiles(); }, [fetchProfiles]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/reviews/averages/all")
+    axios.get("https://framecut-rqms.onrender.com/api/reviews/averages/all")
       .then(res => setRatings(res.data))
       .catch(() => {});
   }, []);

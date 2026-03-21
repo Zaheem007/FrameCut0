@@ -30,10 +30,7 @@ const styles = `
   .vg-card-footer { padding-top: 14px; border-top: 1.5px solid var(--border); margin-top: 14px; display: flex; align-items: center; justify-content: space-between; }
 
   .status-pill { display: flex; align-items: center; gap: 7px; }
-  .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .status-dot.approved { background: var(--green); }
-  .status-dot.rejected { background: var(--red); }
-  .status-dot.pending  { background: var(--amber); }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--green); }
 
   .vg-actions { display: flex; gap: 8px; }
 
@@ -52,12 +49,6 @@ const styles = `
   .stat-card.pending  .stat-num { color: var(--amber); }
 `;
 
-function statusClass(s) {
-  if (s === "Approved") return "approved";
-  if (s === "Rejected") return "rejected";
-  return "pending";
-}
-
 function VideographerDashboard() {
   const navigate = useNavigate();
   const [bookings, setBookings] = useState([]);
@@ -66,23 +57,13 @@ function VideographerDashboard() {
 
   useEffect(() => {
     if (!userId) return;
-    axios.get(`https://framecut-rqms.onrender.com/api/profiles/user/${userId}`)
-      .then(res => axios.get(`https://framecut-rqms.onrender.com/api/bookings/videographer/${res.data._id}`))
+    axios.get(`http://localhost:5000/api/profiles/user/${userId}`)
+      .then(res => axios.get(`http://localhost:5000/api/bookings/videographer/${res.data._id}`))
       .then(res => setBookings(res.data))
       .catch(() => setNoProfile(true));
   }, [userId]);
 
-  const updateStatus = (id, status) => {
-    axios.put(`https://framecut-rqms.onrender.com/api/bookings/update/${id}`, { status })
-      .then(() => {
-        setBookings(bookings.map(b => b._id === id ? { ...b, status } : b));
-        toast(`Booking ${status.toLowerCase()} successfully.`, status === "Approved" ? "success" : "info");
-      })
-      .catch(() => toast("Failed to update status.", "error"));
-  };
-
-  const pending = bookings.filter(b => b.status === "Pending").length;
-  const approved = bookings.filter(b => b.status === "Approved").length;
+  const total = bookings.length;
 
   return (
     <DashboardLayout role="videographer">
@@ -92,7 +73,7 @@ function VideographerDashboard() {
       <div className="fc-page-header">
         <p className="fc-eyebrow">Incoming</p>
         <h2 className="fc-title">Booking Requests</h2>
-        <p className="fc-subtitle">{bookings.length} total request{bookings.length !== 1 ? "s" : ""}</p>
+        <p className="fc-subtitle">{bookings.length} booking{bookings.length !== 1 ? "s" : ""}</p>
       </div>
 
       {noProfile ? (
@@ -103,16 +84,8 @@ function VideographerDashboard() {
         <>
           <div className="vg-stats">
             <div className="stat-card">
-              <p className="stat-num">{bookings.length}</p>
-              <p className="stat-label">Total</p>
-            </div>
-            <div className="stat-card approved">
-              <p className="stat-num">{approved}</p>
-              <p className="stat-label">Approved</p>
-            </div>
-            <div className="stat-card pending">
-              <p className="stat-num">{pending}</p>
-              <p className="stat-label">Pending</p>
+              <p className="stat-num">{total}</p>
+              <p className="stat-label">Total Bookings</p>
             </div>
           </div>
 
@@ -121,7 +94,6 @@ function VideographerDashboard() {
           ) : (
             <div className="vg-grid">
               {bookings.map((b, i) => {
-                const sc = statusClass(b.status);
                 return (
                   <div className={`vg-card anim-fadeup anim-d${Math.min(i + 1, 6)}`} key={b._id}>
                     <p className="vg-card-label">Event Booking</p>
@@ -134,15 +106,9 @@ function VideographerDashboard() {
                     {b.notes && <div className="vg-detail"><span className="vg-key">Notes</span><span className="vg-val">{b.notes}</span></div>}
                     <div className="vg-card-footer">
                       <div className="status-pill">
-                        <div className={`status-dot ${sc}`} />
-                        <span className={`fc-badge fc-badge-${sc}`}>{b.status}</span>
+                        <div className="status-dot" />
+                        <span className="fc-badge fc-badge-approved">Confirmed</span>
                       </div>
-                      {b.status === "Pending" && (
-                        <div className="vg-actions">
-                          <RippleButton className="fc-btn-sm" style={{ background: "rgba(74,140,110,0.1)", color: "var(--green)", border: "1.5px solid rgba(74,140,110,0.3)", borderRadius: "var(--radius)" }} onClick={() => updateStatus(b._id, "Approved")}>Approve</RippleButton>
-                          <RippleButton className="fc-btn-danger fc-btn-sm" onClick={() => updateStatus(b._id, "Rejected")}>Reject</RippleButton>
-                        </div>
-                      )}
                     </div>
                   </div>
                 );

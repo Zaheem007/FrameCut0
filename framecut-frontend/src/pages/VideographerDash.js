@@ -53,17 +53,34 @@ function VideographerDashboard() {
   const navigate = useNavigate();
   const [bookings, setBookings] = useState([]);
   const [noProfile, setNoProfile] = useState(false);
+  const [loading, setLoading] = useState(true);
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     if (!userId) return;
-    axios.get(`http://localhost:5000/api/profiles/user/${userId}`)
-      .then(res => axios.get(`http://localhost:5000/api/bookings/videographer/${res.data._id}`))
-      .then(res => setBookings(res.data))
-      .catch(() => setNoProfile(true));
+    axios.get(`https://framecut-rqms.onrender.com/api/profiles/user/${userId}`)
+      .then(res => {
+        const profileId = res.data._id;
+        return axios.get(`https://framecut-rqms.onrender.com/api/bookings/videographer/${profileId}`);
+      })
+      .then(res => { setBookings(res.data); setLoading(false); })
+      .catch(err => {
+        if (err.response?.status === 404) setNoProfile(true);
+        setLoading(false);
+      });
   }, [userId]);
 
   const total = bookings.length;
+
+  if (loading) return (
+    <DashboardLayout role="videographer">
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "60vh", gap: "16px", fontFamily: "var(--ff-ui)" }}>
+        <div style={{ width: 36, height: 36, border: "3px solid var(--border)", borderTop: "3px solid var(--violet)", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+        <p style={{ color: "var(--muted)", fontSize: "13px" }}>Loading bookings...</p>
+      </div>
+    </DashboardLayout>
+  );
 
   return (
     <DashboardLayout role="videographer">

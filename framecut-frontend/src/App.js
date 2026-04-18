@@ -14,6 +14,8 @@ import Booking from "./pages/Booking";
 import Videographers from "./pages/Videographers";
 import MyBookings from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
+import PaymentPage from "./pages/PaymentPage";
+
 
 function App() {
   return (
@@ -34,7 +36,7 @@ function App() {
         <Route path="/videographers"  element={<Videographers />} />
         <Route path="/home"           element={<MyBookings />} />
         <Route path="/portfolio"      element={<Portfolio />} />
-      </Routes>
+        <Route path="/payment" element={<PaymentPage />} />    </Routes>
     </Router>
   );
 }

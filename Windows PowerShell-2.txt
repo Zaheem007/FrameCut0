@@ -1,0 +1,1796 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\zahee> cd "C:\Users\zahee\OneDrive\Desktop\Mini_Project"
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> mongod
+mongod : The term 'mongod' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongod
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongod:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> npm install express mongoose cors dotenv bcrypt jsonwebtoken
+
+up to date, audited 103 packages in 2s
+
+26 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> mongod
+mongod : The term 'mongod' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongod
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongod:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> node server.js
+Server running on port 5000
+MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at _handleConnectionErrors (C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\mongoose\lib\connection.js:1169:11)
+    at NativeConnection.openUri (C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\mongoose\lib\connection.js:1100:11) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined,
+  cause: TopologyDescription {
+    type: 'Unknown',
+    servers: Map(1) { '127.0.0.1:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: null,
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  }
+}
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> mongod
+mongod : The term 'mongod' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongod
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongod:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> npm install mongodb
+
+added 1 package, changed 1 package, and audited 104 packages in 6s
+
+26 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> mongod
+mongod : The term 'mongod' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ mongod
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (mongod:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> node server.js
+Server running on port 5000
+MongoDB Connected
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> node server.js
+Server running on port 5000
+Hii MongoDB
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> node server.js
+Server running on port 5000
+Hii MongoDB
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> node server.js
+Server running on port 5000
+Hii MongoDB
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> node server.js
+Server running on port 5000
+Hii MongoDB
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> node server.js
+Server running on port 5000
+Hii MongoDB
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> node server.js
+Server running on port 5000
+MongoDB connected
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> npm install -g nodemon
+
+added 28 packages in 4s
+
+5 packages are looking for funding
+  run `npm fund` for details
+PS C:\Users\zahee\OneDrive\Desktop\Mini_Project> nodemon server.js
+[nodemon] 3.1.14
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+MongoDB connected
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\express\lib\application.js:213
+    throw new TypeError('app.use() requires a middleware function')
+    ^
+
+TypeError: app.use() requires a middleware function
+    at app.use (C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\express\lib\application.js:213:11)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\express\lib\application.js:213
+    throw new TypeError('app.use() requires a middleware function')
+    ^
+
+TypeError: app.use() requires a middleware function
+    at app.use (C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\express\lib\application.js:213:11)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\express\lib\application.js:213
+    throw new TypeError('app.use() requires a middleware function')
+    ^
+
+TypeError: app.use() requires a middleware function
+    at app.use (C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\express\lib\application.js:213:11)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\express\lib\application.js:213
+    throw new TypeError('app.use() requires a middleware function')
+    ^
+
+TypeError: app.use() requires a middleware function
+    at app.use (C:\Users\zahee\OneDrive\Desktop\Mini_Project\node_modules\express\lib\application.js:213:11)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+(node:2568) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 exit listeners added to [Bus]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",booking)
+                       ^
+
+ReferenceError: booking is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",bookingroute)
+                       ^
+
+ReferenceError: bookingroute is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",bookingroutes)
+                       ^
+
+ReferenceError: bookingroutes is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",bookingroutes);
+                       ^
+
+ReferenceError: bookingroutes is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/booking",bookingroutes);
+                       ^
+
+ReferenceError: bookingroutes is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:24)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11
+app.use("/api/bookings",bookingroutes);
+                        ^
+
+ReferenceError: bookingroutes is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:11:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:4
+const express = require("express");
+^^^^^
+
+SyntaxError: Unexpected token 'const'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:3
+const booking
+      ^^^^^^^
+
+SyntaxError: Missing initializer in const declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:3
+const bookingroutes
+      ^^^^^^^^^^^^^
+
+SyntaxError: Missing initializer in const declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:3
+const bookingroutes=rew
+                    ^
+
+ReferenceError: rew is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:3:21)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+node:internal/modules/cjs/loader:1499
+    throw new ERR_INVALID_ARG_VALUE('id', id,
+    ^
+
+TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''
+    at Module.require (node:internal/modules/cjs/loader:1499:11)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:3:21)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5) {
+  code: 'ERR_INVALID_ARG_VALUE'
+}
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+node:internal/modules/cjs/loader:533
+      throw err;
+      ^
+
+Error: Cannot find module 'C:\Users\zahee\OneDrive\Desktop\Mini_Project\index.js'. Please verify that the package.json has a valid "main" entry
+    at tryPackage (node:internal/modules/cjs/loader:525:19)
+    at Module._findPath (node:internal/modules/cjs/loader:793:18)
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1406:27)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16) {
+  code: 'MODULE_NOT_FOUND',
+  path: '\\\\?\\C:\\Users\\zahee\\OneDrive\\Desktop\\Mini_Project\\package.json',
+  requestPath: '.'
+}
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+node:internal/modules/cjs/loader:1424
+  throw err;
+  ^
+
+Error: Cannot find module './routes/'
+Require stack:
+- C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+    at Module._load (node:internal/modules/cjs/loader:1227:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:3:21)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ 'C:\\Users\\zahee\\OneDrive\\Desktop\\Mini_Project\\server.js' ]
+}
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+(node:8784) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8784) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:8784) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+Server running on port 5000
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:14
+app.use("/api/portfolio", portfolioRoutes);
+                          ^
+
+ReferenceError: portfolioRoutes is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:14:27)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29
+module.exports = mongoose.model("Review", reviewschema);
+                                          ^
+
+ReferenceError: reviewschema is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29:43)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\reviewRoutes.js:2:16)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29
+module.exports = mongoose.model("Review", reviewschema);
+                                          ^
+
+ReferenceError: reviewschema is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29:43)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\reviewRoutes.js:2:16)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29
+module.exports = mongoose.model("Review", reviewschema);
+                                          ^
+
+ReferenceError: reviewschema is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29:43)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\reviewroutes.js:2:16)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29
+module.exports = mongoose.model("Review", reviewschema);
+                                          ^
+
+ReferenceError: reviewschema is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29:43)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\reviewroutes.js:2:16)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29
+module.exports = mongoose.model("Review", reviewschema);
+                                          ^
+
+ReferenceError: reviewschema is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29:43)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\reviewroutes.js:2:16)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29
+module.exports = mongoose.model("Review", reviewschema);
+                                          ^
+
+ReferenceError: reviewschema is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29:43)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\reviewroutes.js:2:16)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29
+module.exports = mongoose.model("Review", reviewschema);
+                                          ^
+
+ReferenceError: reviewschema is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29:43)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\reviewroutes.js:2:16)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29
+module.exports = mongoose.model("Review", review);
+                                          ^
+
+ReferenceError: review is not defined
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\models\review.js:29:43)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\reviewroutes.js:2:16)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+Server running on port 5000
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+Server running on port 5000
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\profileroutes.js:23
+  <img
+  ^
+
+SyntaxError: Unexpected token '<'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:2:23)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+(node:1960) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1960) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:1960) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\profileroutes.js:44
+    *res.status(500).json({ message: "Server error" });
+    ^
+
+SyntaxError: Unexpected token '*'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:2:23)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\profileroutes.js:44
+    *res.status(500).json({ message: "Server error" });
+    ^
+
+SyntaxError: Unexpected token '*'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:2:23)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+Server running on port 5000
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+(node:12452) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:12452) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+MongoDB connected
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\profileroutes.js:33
+    await VideographerProfile.findByIdAndDelete(req.params.id);
+    ^^^^^
+
+SyntaxError: await is only valid in async functions and the top level bodies of modules
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:2:23)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+C:\Users\zahee\OneDrive\Desktop\Mini_Project\routes\bookingroutes.js:41
+    const booking = await Booking.findByIdAndUpdate(
+                    ^^^^^
+
+SyntaxError: await is only valid in async functions and the top level bodies of modules
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\zahee\OneDrive\Desktop\Mini_Project\server.js:3:21)
+
+Node.js v24.12.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+MongoDB connected
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+MongoDB connected
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+MongoDB connected
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 5000
+MongoDB connected

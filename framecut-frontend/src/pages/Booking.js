@@ -66,14 +66,15 @@ function Booking() {
   const navigate = useNavigate();
   const clientEmail = localStorage.getItem("email");
   const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [selectedService, setSelectedService] = useState(null);
   const [form, setForm] = useState({ eventDate: "", eventLocation: "", notes: "" });
   const [calMonth, setCalMonth] = useState(new Date());
 
   useEffect(() => {
-    axios.get(`https://framecut-rqms.onrender.com/api/profiles/${id}`)
-      .then(res => setProfile(res.data))
-      .catch(() => toast("Could not load profile.", "error"));
+    axios.get(`http://localhost:5000/api/profiles/${id}`)
+      .then(res => { setProfile(res.data); setLoading(false); })
+      .catch(() => { toast("Could not load profile.", "error"); setLoading(false); });
   }, [id]);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -96,7 +97,7 @@ function Booking() {
     if (!form.eventDate) { toast("Please choose a date.", "warning"); return; }
     if (!form.eventLocation) { toast("Please enter the event location.", "warning"); return; }
 
-    axios.post("https://framecut-rqms.onrender.com/api/bookings/create", {
+    axios.post("http://localhost:5000/api/bookings/create", {
       clientEmail, videographerId: id,
       eventType: selectedService?.name || "",
       selectedService: selectedService?.name || "",
@@ -105,12 +106,31 @@ function Booking() {
       eventLocation: form.eventLocation,
       notes: form.notes,
     })
-      .then(() => {
-        toast("Booking submitted! You'll hear back soon.", "success", "Request Sent");
-        setTimeout(() => navigate("/home"), 800);
+      .then((res) => {
+        toast("Booking confirmed! Redirecting to payment...", "success", "Booking Created");
+        setTimeout(() => navigate("/payment", {
+          state: {
+            bookingId: res.data.booking._id,
+            totalAmount: Number(selectedService?.price || 0),
+            clientEmail,
+            videographerId: id,
+            videographerName: profile?.name,
+          }
+        }), 800);
       })
       .catch(() => toast("Failed to submit booking.", "error"));
   };
+
+  if (loading) return (
+    <>
+      <style>{styles}</style>
+      <div style={{ minHeight: "100vh", background: "var(--bg)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "16px", fontFamily: "var(--ff-ui)" }}>
+        <div style={{ width: 36, height: 36, border: "3px solid var(--border)", borderTop: "3px solid var(--violet)", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+        <p style={{ color: "var(--muted)", fontSize: "13px" }}>Loading profile...</p>
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    </>
+  );
 
   return (
     <>

@@ -9,6 +9,8 @@ const profileroutes = require("./routes/profileroutes");
 const bookingroutes = require("./routes/bookingroutes");
 const portfolioroutes = require("./routes/portfolioroutes");
 const reviewroutes = require("./routes/reviewroutes");
+const paymentRoutes = require("./routes/paymentroutes");
+
 
 const app = express();
 app.use(cors());
@@ -20,6 +22,7 @@ app.use("/api/profiles", profileroutes);
 app.use("/api/bookings", bookingroutes);
 app.use("/api/portfolio", portfolioroutes);
 app.use("/api/reviews", reviewroutes);
+app.use("/api/payments", paymentRoutes);
 
 app.get("/", (req, res) => res.send("Backend connected"));
 

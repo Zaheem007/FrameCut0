@@ -51,7 +51,7 @@ function PaymentPage() {
     if (!bookingId || !totalAmount) { toast("Missing booking details.", "error"); return; }
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/payments/create-order", {
+      const res = await axios.post("https://framecut-rqms.onrender.com/api/payments/create-order", {
         bookingId, totalAmount, clientEmail, videographerId,
       });
       setOrderData(res.data);
@@ -72,7 +72,7 @@ function PaymentPage() {
       order_id: data.orderId,
       handler: async (response) => {
         try {
-          await axios.post("http://localhost:5000/api/payments/verify", {
+          await axios.post("https://framecut-rqms.onrender.com/api/payments/verify", {
             razorpay_order_id: response.razorpay_order_id,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,

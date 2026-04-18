@@ -458,7 +458,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
    8 |
 >  9 |   useEffect(() => {
      |            ^
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
   11 |       .then(res => setProfiles(res.data))
   12 |       .catch(err => console.log(err));
     at parser.next (<anonymous>)
@@ -473,7 +473,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
    8 |
 >  9 |   useEffect(() => {
      |            ^
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
   11 |       .then(res => setProfiles(res.data))
   12 |       .catch(err => console.log(err));
     at constructor (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:365:19)
@@ -533,7 +533,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
      |           ^
    8 |
    9 |   useEffect(() => {
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
     at parser.next (<anonymous>)
     at normalizeFile.next (<anonymous>)
     at run.next (<anonymous>)
@@ -548,7 +548,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
      |           ^
    8 |
    9 |   useEffect(() => {
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
     at constructor (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:365:19)
     at FlowParserMixin.raise (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:6599:19)
     at FlowParserMixin.parseVar (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:13387:16)
@@ -606,7 +606,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
      |                  ^
    8 |
    9 |   useEffect(() => {
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
     at parser.next (<anonymous>)
     at normalizeFile.next (<anonymous>)
     at run.next (<anonymous>)
@@ -621,7 +621,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
      |                  ^
    8 |
    9 |   useEffect(() => {
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
     at constructor (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:365:19)
     at FlowParserMixin.raise (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:6599:19)
     at FlowParserMixin.parseVar (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:13387:16)
@@ -679,7 +679,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
      |                           ^
    8 |
    9 |   useEffect(() => {
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
     at parser.next (<anonymous>)
     at normalizeFile.next (<anonymous>)
     at run.next (<anonymous>)
@@ -694,7 +694,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
      |                           ^
    8 |
    9 |   useEffect(() => {
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
     at constructor (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:365:19)
     at FlowParserMixin.raise (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:6599:19)
     at FlowParserMixin.parseVar (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:13387:16)
@@ -752,7 +752,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
      |                            ^
    8 |
    9 |   useEffect(() => {
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
     at parser.next (<anonymous>)
     at normalizeFile.next (<anonymous>)
     at run.next (<anonymous>)
@@ -767,7 +767,7 @@ SyntaxError: C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\src\
      |                            ^
    8 |
    9 |   useEffect(() => {
-  10 |     axios.get("http://localhost:5000/api/profiles")
+  10 |     axios.get("https://framecut-rqms.onrender.com/api/profiles")
     at constructor (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:365:19)
     at FlowParserMixin.raise (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:6599:19)
     at FlowParserMixin.parseVar (C:\Users\zahee\OneDrive\Desktop\Mini_Project\framecut-frontend\node_modules\@babel\parser\lib\index.js:13387:16)

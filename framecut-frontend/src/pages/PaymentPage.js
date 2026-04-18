@@ -61,7 +61,7 @@ function PaymentPage() {
     if (!bookingId) { toast("Booking details missing.", "error"); return; }
     setLoading(true);
     try {
-      await axios.put(`http://localhost:5000/api/bookings/pay-advance/${bookingId}`);
+      await axios.put(`https://framecut-rqms.onrender.com/api/bookings/pay-advance/${bookingId}`);
       setPaid(true);
       toast("Advance payment successful!", "success");
     } catch {

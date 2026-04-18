@@ -58,10 +58,10 @@ function VideographerDashboard() {
 
   useEffect(() => {
     if (!userId) return;
-    axios.get(`http://localhost:5000/api/profiles/user/${userId}`)
+    axios.get(`https://framecut-rqms.onrender.com/api/profiles/user/${userId}`)
       .then(res => {
         const profileId = res.data._id;
-        return axios.get(`http://localhost:5000/api/bookings/videographer/${profileId}`);
+        return axios.get(`https://framecut-rqms.onrender.com/api/bookings/videographer/${profileId}`);
       })
       .then(res => { setBookings(res.data); setLoading(false); })
       .catch(err => {

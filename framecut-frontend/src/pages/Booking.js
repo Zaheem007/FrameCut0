@@ -72,7 +72,7 @@ function Booking() {
   const [calMonth, setCalMonth] = useState(new Date());
 
   useEffect(() => {
-    axios.get(`https://framecut-rqms.onrender.com/api/profiles/${id}`)
+    axios.get(`http://localhost:5000/api/profiles/${id}`)
       .then(res => { setProfile(res.data); setLoading(false); })
       .catch(() => { toast("Could not load profile.", "error"); setLoading(false); });
   }, [id]);
@@ -97,7 +97,7 @@ function Booking() {
     if (!form.eventDate) { toast("Please choose a date.", "warning"); return; }
     if (!form.eventLocation) { toast("Please enter the event location.", "warning"); return; }
 
-    axios.post("https://framecut-rqms.onrender.com/api/bookings/create", {
+    axios.post("http://localhost:5000/api/bookings/create", {
       clientEmail, videographerId: id,
       eventType: selectedService?.name || "",
       selectedService: selectedService?.name || "",
@@ -115,6 +115,9 @@ function Booking() {
             clientEmail,
             videographerId: id,
             videographerName: profile?.name,
+            eventDate: form.eventDate,
+            eventLocation: form.eventLocation,
+            selectedService: selectedService?.name || "",
           }
         }), 800);
       })

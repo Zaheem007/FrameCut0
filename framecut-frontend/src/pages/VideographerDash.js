@@ -58,10 +58,10 @@ function VideographerDashboard() {
 
   useEffect(() => {
     if (!userId) return;
-    axios.get(`https://framecut-rqms.onrender.com/api/profiles/user/${userId}`)
+    axios.get(`http://localhost:5000/api/profiles/user/${userId}`)
       .then(res => {
         const profileId = res.data._id;
-        return axios.get(`https://framecut-rqms.onrender.com/api/bookings/videographer/${profileId}`);
+        return axios.get(`http://localhost:5000/api/bookings/videographer/${profileId}`);
       })
       .then(res => { setBookings(res.data); setLoading(false); })
       .catch(err => {
@@ -126,6 +126,15 @@ function VideographerDashboard() {
                         <div className="status-dot" />
                         <span className="fc-badge fc-badge-approved">Confirmed</span>
                       </div>
+                      <span style={{
+                        fontSize: "11px", fontWeight: 600, padding: "3px 10px",
+                        borderRadius: "99px",
+                        background: b.paymentStatus === "Advance Paid" ? "rgba(74,140,110,0.12)" : "rgba(176,120,48,0.1)",
+                        color: b.paymentStatus === "Advance Paid" ? "var(--green)" : "var(--amber)",
+                        border: `1px solid ${b.paymentStatus === "Advance Paid" ? "rgba(74,140,110,0.3)" : "rgba(176,120,48,0.3)"}`,
+                      }}>
+                        {b.paymentStatus === "Advance Paid" ? "💰 Advance Paid" : "⏳ Payment Pending"}
+                      </span>
                     </div>
                   </div>
                 );

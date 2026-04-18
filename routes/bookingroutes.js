@@ -49,4 +49,18 @@ router.put("/update/:id", async (req, res) => {
   }
 });
 
+/* MARK ADVANCE PAYMENT AS PAID */
+router.put("/pay-advance/:id", async (req, res) => {
+  try {
+    const booking = await Booking.findByIdAndUpdate(
+      req.params.id,
+      { paymentStatus: "Advance Paid" },
+      { new: true }
+    );
+    res.json(booking);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 module.exports = router;

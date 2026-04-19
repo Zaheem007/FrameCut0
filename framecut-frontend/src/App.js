@@ -15,7 +15,7 @@ import Videographers from "./pages/Videographers";
 import MyBookings from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import PaymentPage from "./pages/PaymentPage";
-
+import ClientProfile from "./pages/ClientProfile";
 
 function App() {
   return (
@@ -36,7 +36,9 @@ function App() {
         <Route path="/videographers"  element={<Videographers />} />
         <Route path="/home"           element={<MyBookings />} />
         <Route path="/portfolio"      element={<Portfolio />} />
-        <Route path="/payment" element={<PaymentPage />} />    </Routes>
+        <Route path="/payment"        element={<PaymentPage />} />
+        <Route path="/client-profile" element={<ClientProfile />} />
+      </Routes>
     </Router>
   );
 }

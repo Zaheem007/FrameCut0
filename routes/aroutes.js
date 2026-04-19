@@ -64,4 +64,15 @@ router.post("/change-password", async (req, res) => {
   }
 });
 
+router.put("/update-name", async (req, res) => {
+  try {
+    const { userId, name } = req.body;
+    if (!userId || !name) return res.status(400).json({ message: "userId and name required" });
+    await User.findByIdAndUpdate(userId, { name });
+    res.json({ message: "Name updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 module.exports = router;

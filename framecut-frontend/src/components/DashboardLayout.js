@@ -161,9 +161,10 @@ function DashboardLayout({ children, role }) {
   };
 
   const clientLinks = [
-    { to: "/client",        label: "Dashboard",   icon: "◈" },
-    { to: "/videographers", label: "Browse",       icon: "▶" },
-    { to: "/home",          label: "My Bookings",  icon: "◷" },
+    { to: "/client",         label: "Dashboard",    icon: "◈" },
+    { to: "/videographers",  label: "Browse",        icon: "▶" },
+    { to: "/home",           label: "My Bookings",   icon: "◷" },
+    { to: "/client-profile", label: "My Profile",    icon: "👤" },
   ];
   const videographerLinks = [
     { to: "/videographer",   label: "Dashboard",  icon: "◈" },

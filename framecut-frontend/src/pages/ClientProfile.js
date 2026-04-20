@@ -60,7 +60,7 @@ function ClientProfile() {
       .then(res => setBookings(res.data.filter(b => b.clientEmail === email)))
       .catch(() => {});
     // Fetch all reviews by clientName (approximate)
-    axios.get(`https://framecut-rqms.onrender.com/api/reviews/client/${userId}`)
+    axios.get(`https://framecut-rqms.onrender.com/api/reviews/${userId}`)
       .then(res => setReviews(res.data))
       .catch(() => {});
   }, [email, userId]);

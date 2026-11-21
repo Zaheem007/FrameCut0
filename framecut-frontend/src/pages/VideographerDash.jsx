@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import DashboardLayout from "../components/DashboardLayout";
-import { GLOBAL_CSS, RippleButton, toast } from "../theme";
+import { GLOBAL_CSS } from "../theme";
 
 const styles = `
   ${GLOBAL_CSS}

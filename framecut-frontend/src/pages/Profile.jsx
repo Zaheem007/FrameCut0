@@ -78,6 +78,7 @@ function Profile() {
   const [profile, setProfile] = useState(null);
   const [portfolio, setPortfolio] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [clientBookings, setClientBookings] = useState([]);
   const [hoverStar, setHoverStar] = useState(0);
   const [reviewForm, setReviewForm] = useState({ rating: 0, comment: "", clientName: "" });
   const role = localStorage.getItem("role");
@@ -86,15 +87,18 @@ function Profile() {
     axios.get(`https://framecut-rqms.onrender.com/api/profiles/${id}`).then(r => setProfile(r.data));
     axios.get(`https://framecut-rqms.onrender.com/api/portfolio/${id}`).then(r => setPortfolio(r.data));
     axios.get(`https://framecut-rqms.onrender.com/api/reviews/${id}`).then(r => setReviews(r.data));
-  }, [id]);
+    if (role === "client") {
+      axios.get("https://framecut-rqms.onrender.com/api/bookings")
+        .then(r => setClientBookings(r.data.filter(b => String(b.videographerId?._id || b.videographerId) === String(id))));
+    }
+  }, [id, role]);
 
   const submitReview = () => {
-    if (!reviewForm.clientName) { toast("Please enter your name.", "warning"); return; }
     if (!reviewForm.rating) { toast("Please select a rating.", "warning"); return; }
+    if (!clientBookings.length) { toast("You can review this videographer after completing a booking.", "warning"); return; }
     axios.post("https://framecut-rqms.onrender.com/api/reviews/add", {
       videographerId: id,
-      bookingId: id, // simplified — ideally link to actual booking
-      clientName: reviewForm.clientName,
+      bookingId: clientBookings[0]._id,
       rating: reviewForm.rating,
       comment: reviewForm.comment,
     })
@@ -236,7 +240,7 @@ function Profile() {
             })()}
 
             {/* Write a review — visible to clients only */}
-            {role === "client" && (
+            {role === "client" && clientBookings.length > 0 && (
               <div className="review-form">
                 <p className="rf-title">Write a Review</p>
                 <div className="fc-field">

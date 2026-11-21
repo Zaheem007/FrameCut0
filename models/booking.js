@@ -11,6 +11,7 @@ const bookingSchema = new mongoose.Schema({
   notes:           { type: String, default: "" },
   status:          { type: String, default: "Confirmed" },
   paymentStatus:   { type: String, default: "Pending" },  // Pending / Advance Paid
+  paymentOrderId:  { type: String, default: "" },
 }, { timestamps: true });
 
 module.exports = mongoose.models.Booking || mongoose.model("Booking", bookingSchema);

@@ -1,17 +1,16 @@
 const express = require("express");
 const VideographerProfile = require("../models/videoprof");
-const { protect, adminOnly } = require("../middleware/authMiddleware");
+const { protect, roleRequired, adminOnly } = require("../middleware/authMiddleware");
 const router = express.Router();
 
 
-router.post("/create", async (req, res) => {
+router.post("/create", protect, roleRequired("videographer"), async (req, res) => {
   try {
-    const { userId, ...rest } = req.body;
-    if (!userId) return res.status(400).json({ message: "userId is required" });
+    const { userId: ignoredUserId, ...rest } = req.body;
 
     const profile = await VideographerProfile.findOneAndUpdate(
-      { userId },
-      { userId, ...rest },
+      { userId: req.user.id },
+      { userId: req.user.id, ...rest },
       { upsert: true, new: true, runValidators: true }
     );
 
@@ -26,7 +25,8 @@ router.get("/", async (req, res) => {
     const { location } = req.query;
     let filter = {};
     if (location) {
-      filter.location = { $regex: location, $options: "i" };
+      const escapedLocation = location.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      filter.location = { $regex: escapedLocation, $options: "i" };
     }
     const profiles = await VideographerProfile.find(filter);
     res.json(profiles);
@@ -51,12 +51,18 @@ router.delete("/delete/:id", protect, adminOnly, async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-router.put("/update/:id", async (req, res) => {
+router.put("/update/:id", protect, async (req, res) => {
   try {
+    const existing = await VideographerProfile.findById(req.params.id);
+    if (!existing) return res.status(404).json({ message: "Profile not found" });
+    if (req.user.role !== "admin" && String(existing.userId) !== String(req.user.id)) {
+      return res.status(403).json({ message: "You cannot update this profile" });
+    }
+    const { userId: ignoredUserId, _id: ignoredId, ...updates } = req.body;
     const updatedProfile = await VideographerProfile.findByIdAndUpdate(
       req.params.id,
-      req.body,
-      { new: true }
+      updates,
+      { new: true, runValidators: true }
     );
     res.json({ message: "Profile updated successfully", updatedProfile });
   } catch (error) {

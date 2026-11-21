@@ -26,10 +26,18 @@ app.use("/api/payments", paymentRoutes);
 
 app.get("/", (req, res) => res.send("Backend connected"));
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+const port = process.env.PORT || 5000;
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server running on port ${process.env.PORT || 5000}`);
-});
+if (!process.env.MONGO_URI || !process.env.JWT_SECRET) {
+  throw new Error("MONGO_URI and JWT_SECRET must be configured");
+}
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB connected");
+    app.listen(port, () => console.log(`Server running on port ${port}`));
+  })
+  .catch((error) => {
+    console.error("MongoDB connection failed:", error);
+    process.exitCode = 1;
+  });
